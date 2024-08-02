@@ -33,12 +33,10 @@ namespace MVC21BITV01Test.Controllers
                         where hoaDon.MaHd.Equals(maHD)
                         select new ViewModel
                         {
-                            /*MaSp = sanPham.MaSp,
+                            MaSp = sanPham.MaSp,
                             TenSp = sanPham.TenSp,
                             DonViTinh = sanPham.DonViTinh,
                             SoLuong = chiTietHoaDon.SoLuong,
-                            DonGia = sanPham.DonGia,
-                            ThanhTien = chiTietHoaDon.SoLuong * sanPham.DonGia*/
                         };
 
             var result = await query.ToListAsync();

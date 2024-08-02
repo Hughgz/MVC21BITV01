@@ -2,7 +2,7 @@
 {
     public class ViewModel
     {
-            public string MaSp { get; set; }
+            public int MaSp { get; set; }
             public string TenSp { get; set; }
             public string DonViTinh { get; set; }
             public int SoLuong { get; set; }
