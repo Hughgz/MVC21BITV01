@@ -48,9 +48,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DienThoai)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThanhPhoNavigation.MaThanhPho)
-            </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.ThanhPhoNavigation.TenThanhPho)
+                </td>
             <td>
                     <a asp-action="Edit" asp-route-id="@item.MaKh" class="btn btn-outline-primary">Edit</a>
                     <a asp-action="Details" asp-route-id="@item.MaKh" class="btn btn-outline-primary">Details</a>
