@@ -56,6 +56,7 @@ namespace MVC21BITV01Test.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+<<<<<<< HEAD
         public async Task<IActionResult> Create([Bind("MaKh,TenCty,DiaChi,DienThoai,ThanhPho")] KhachHang khachHang)
         {
             if (ModelState.IsValid)
@@ -66,6 +67,24 @@ namespace MVC21BITV01Test.Controllers
             }
             ViewData["ThanhPho"] = new SelectList(_context.ThanhPhos, "MaThanhPho", "MaThanhPho", khachHang.ThanhPho);
             return View(khachHang);
+=======
+        public async Task<IActionResult> Create(KhachHang khachHang)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Add(khachHang);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewData["ThanhPho"] = new SelectList(_context.ThanhPhos, "MaThanhPho", "MaThanhPho", khachHang.ThanhPho);
+                return View(khachHang);
+            }
+            catch (Exception ex) { 
+                return BadRequest(ex.Message);
+            }
+>>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
         }
 
         // GET: KhachHangs/Edit/5

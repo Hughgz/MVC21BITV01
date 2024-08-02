@@ -10,7 +10,11 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+<<<<<<< HEAD
         <form asp-action="Create" enctype="multipart/form-data">
+=======
+        <form asp-action="Create">
+>>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="TenSp" class="control-label"></label>
@@ -23,6 +27,7 @@
                 <span asp-validation-for="DonViTinh" class="text-danger"></span>
             </div>
             <div class="form-group">
+<<<<<<< HEAD
                 <label asp-for="DonGia" class="control-label"></label>
                 <input asp-for="DonGia" class="form-control" />
                 <span asp-validation-for="DonGia" class="text-danger"></span>
@@ -30,6 +35,10 @@
             <div class="form-group">
                 <label asp-for="Hinh" class="control-label"></label>
                 <input type="file" asp-for="Hinh" class="form-control" />
+=======
+                <label asp-for="Hinh" class="control-label"></label>
+                <input asp-for="Hinh" class="form-control" />
+>>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
                 <span asp-validation-for="Hinh" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -44,7 +53,11 @@
 </div>
 
 @section Scripts {
+<<<<<<< HEAD
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+=======
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+>>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
 }
