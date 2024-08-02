@@ -19,10 +19,33 @@ namespace MVC21BITV01Test.Controllers
         }
 
         // GET: SanPhams
-        public async Task<IActionResult> Index()
+        [HttpGet("/donhang/{mahd}")]
+        public async Task<IActionResult> ProductsById(string maHD)
         {
-            return View(await _context.SanPhams.ToListAsync());
+            if (string.IsNullOrEmpty(maHD))
+            {
+                return NotFound();
+            }
+
+            var query = from hoaDon in _context.HoaDons
+                        join chiTietHoaDon in _context.ChiTietHoaDons on hoaDon.MaHd equals chiTietHoaDon.MaHd
+                        join sanPham in _context.SanPhams on chiTietHoaDon.MaSp equals sanPham.MaSp
+                        where hoaDon.MaHd.Equals(maHD)
+                        select new ViewModel
+                        {
+                            /*MaSp = sanPham.MaSp,
+                            TenSp = sanPham.TenSp,
+                            DonViTinh = sanPham.DonViTinh,
+                            SoLuong = chiTietHoaDon.SoLuong,
+                            DonGia = sanPham.DonGia,
+                            ThanhTien = chiTietHoaDon.SoLuong * sanPham.DonGia*/
+                        };
+
+            var result = await query.ToListAsync();
+
+            return View(result);
         }
+
 
         // GET: SanPhams/Details/5
         public async Task<IActionResult> Details(int? id)
