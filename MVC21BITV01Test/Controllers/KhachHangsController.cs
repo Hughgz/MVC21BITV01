@@ -56,7 +56,7 @@ namespace MVC21BITV01Test.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(KhachHang khachHang)
+        public async Task<IActionResult> Create([Bind("MaKh,TenCty,DiaChi,DienThoai,ThanhPho")] KhachHang khachHang)
         {
             try
             {

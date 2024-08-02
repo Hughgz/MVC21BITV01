@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC21BITV01Test.Models;
+using System.IO;
 
 namespace MVC21BITV01Test.Controllers
 {
@@ -64,23 +66,43 @@ namespace MVC21BITV01Test.Controllers
         }
 
         // GET: SanPhams/Create
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: SanPhams/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaSp,TenSp,DonViTinh,DonGia,Hinh")] SanPham sanPham)
+        public async Task<IActionResult> Create([Bind("MaSp,TenSp,DonViTinh,DonGia")] SanPham sanPham, IFormFile Hinh)
         {
-            if (ModelState.IsValid)
+            if (Hinh != null && Hinh.Length > 0)
             {
-                _context.Add(sanPham);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var supportedTypes = new[] { "jpg", "jpeg", "png", "gif" };
+                var fileExt = Path.GetExtension(Hinh.FileName).Substring(1).ToLower();
+
+                if (!supportedTypes.Contains(fileExt))
+                {
+                    ModelState.AddModelError("Hinh", "Invalid image format. Only JPG, JPEG, PNG, and GIF are allowed.");
+                }
+                else
+                {
+                    // Save the image to wwwroot/img_products
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img_products", Hinh.FileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await Hinh.CopyToAsync(stream);
+                    }
+
+                    sanPham.Hinh = Hinh.FileName;
+                }
+            }
+
+            if (sanPham.DonGia <= 0)
+            {
+                ModelState.AddModelError("DonGia", "DonGia must be a number greater than 0.");
             }
             return View(sanPham);
         }
@@ -104,6 +126,7 @@ namespace MVC21BITV01Test.Controllers
         // POST: SanPhams/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MaSp,TenSp,DonViTinh,DonGia,Hinh")] SanPham sanPham)
