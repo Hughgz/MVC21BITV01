@@ -14,13 +14,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.3" />
-<<<<<<< HEAD
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\img_products\" />
-=======
->>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
   </ItemGroup>
 
 </Project>

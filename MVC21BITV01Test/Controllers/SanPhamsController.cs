@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using Microsoft.AspNetCore.Http;
-=======
->>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC21BITV01Test.Models;
-<<<<<<< HEAD
 using System.IO;
-=======
->>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
 
 namespace MVC21BITV01Test.Controllers
 {
@@ -51,17 +45,13 @@ namespace MVC21BITV01Test.Controllers
         }
 
         // GET: SanPhams/Create
-<<<<<<< HEAD
         [HttpGet]
-=======
->>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: SanPhams/Create
-<<<<<<< HEAD
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaSp,TenSp,DonViTinh,DonGia")] SanPham sanPham, IFormFile Hinh)
@@ -93,25 +83,6 @@ namespace MVC21BITV01Test.Controllers
             {
                 ModelState.AddModelError("DonGia", "DonGia must be a number greater than 0.");
             }
-
-=======
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaSp,TenSp,DonViTinh,DonGia,Hinh")] SanPham sanPham)
-        {
->>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
-            if (ModelState.IsValid)
-            {
-                _context.Add(sanPham);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-<<<<<<< HEAD
-
-=======
->>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
             return View(sanPham);
         }
 
@@ -132,11 +103,9 @@ namespace MVC21BITV01Test.Controllers
         }
 
         // POST: SanPhams/Edit/5
-<<<<<<< HEAD
-=======
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
->>>>>>> ca7831af0062a5340b03dc465e152ec73e9976ba
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MaSp,TenSp,DonViTinh,DonGia,Hinh")] SanPham sanPham)
