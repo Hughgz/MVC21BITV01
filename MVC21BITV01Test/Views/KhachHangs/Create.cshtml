@@ -1,60 +1,53 @@
 ﻿@model MVC21BITV01Test.Models.KhachHang
 
 @{
-    ViewData["Title"] = "Thêm mới khách hàng";
+    ViewData["Title"] = "Create";
 }
 
-<h1 style="color: #042b91;">Thêm mới khách hàng</h1>
+<h1>Create</h1>
 
-<h4>Khách hàng</h4>
+<h4>KhachHang</h4>
 <hr />
-
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
             <div class="form-group">
-                <label class="control-label">Mã khách hàng</label>
+                <label asp-for="MaKh" class="control-label"></label>
                 <input asp-for="MaKh" class="form-control" />
                 <span asp-validation-for="MaKh" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label class="control-label">Tên công ty</label>
+                <label asp-for="TenCty" class="control-label"></label>
                 <input asp-for="TenCty" class="form-control" />
                 <span asp-validation-for="TenCty" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label class="control-label">Địa chỉ</label>
+                <label asp-for="DiaChi" class="control-label"></label>
                 <input asp-for="DiaChi" class="form-control" />
                 <span asp-validation-for="DiaChi" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label class="control-label">Điện thoại</label>
+                <label asp-for="DienThoai" class="control-label"></label>
                 <input asp-for="DienThoai" class="form-control" />
                 <span asp-validation-for="DienThoai" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label class="control-label">Thành phố</label>
+                <label asp-for="ThanhPho" class="control-label"></label>
                 <select asp-for="ThanhPho" class="form-control" asp-items="ViewBag.ThanhPho"></select>
                 <span asp-validation-for="ThanhPho" class="text-danger"></span>
             </div>
-
-            <div class="form-group mt-3">
-                <input type="submit" value="Tạo mới" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-light border-dark ml-3">Quay lại danh sách</a>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-
         </form>
     </div>
 </div>
 
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

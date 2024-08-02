@@ -52,6 +52,8 @@ namespace MVC21BITV01Test.Controllers
         }
 
         // POST: SanPhams/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaSp,TenSp,DonViTinh,DonGia")] SanPham sanPham, IFormFile Hinh)
@@ -75,24 +77,22 @@ namespace MVC21BITV01Test.Controllers
                         await Hinh.CopyToAsync(stream);
                     }
 
-                    sanPham.Hinh = Hinh.FileName; // Save file name to database
+                    sanPham.Hinh = Hinh.FileName;
                 }
             }
 
             if (sanPham.DonGia <= 0)
-            {
+        {
                 ModelState.AddModelError("DonGia", "DonGia must be a number greater than 0.");
             }
 
             if (ModelState.IsValid)
             {
-                // Add the product to the database
                 _context.Add(sanPham);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index)); // Redirect to the Index page or another appropriate page
+                return RedirectToAction(nameof(Index));
             }
 
-            // If we got this far, something failed, redisplay form
             return View(sanPham);
         }
 
@@ -115,7 +115,6 @@ namespace MVC21BITV01Test.Controllers
         // POST: SanPhams/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MaSp,TenSp,DonViTinh,DonGia,Hinh")] SanPham sanPham)
