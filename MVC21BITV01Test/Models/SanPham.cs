@@ -18,7 +18,6 @@ public partial class SanPham
     [Range(0.01, double.MaxValue, ErrorMessage = "Đơn giá phải lớn hơn 0.")]
     public double? DonGia { get; set; }
 
-    [Required(ErrorMessage = "Hình sản phẩm là bắt buộc.")]
     public string? Hinh { get; set; }
 
     public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; } = new List<ChiTietHoaDon>();

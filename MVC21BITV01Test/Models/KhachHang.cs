@@ -17,5 +17,5 @@ public partial class KhachHang
 
     public virtual ICollection<HoaDon> HoaDons { get; set; } = new List<HoaDon>();
 
-    public virtual ThanhPho ThanhPhoNavigation { get; set; } = null!;
+    public virtual ThanhPho? ThanhPhoNavigation { get; set; } = null!;
 }

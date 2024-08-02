@@ -75,7 +75,7 @@ namespace MVC21BITV01Test.Controllers
                         await Hinh.CopyToAsync(stream);
                     }
 
-                    sanPham.Hinh = Hinh.FileName;
+                    sanPham.Hinh = Hinh.FileName; // Save file name to database
                 }
             }
 
@@ -83,6 +83,16 @@ namespace MVC21BITV01Test.Controllers
             {
                 ModelState.AddModelError("DonGia", "DonGia must be a number greater than 0.");
             }
+
+            if (ModelState.IsValid)
+            {
+                // Add the product to the database
+                _context.Add(sanPham);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index)); // Redirect to the Index page or another appropriate page
+            }
+
+            // If we got this far, something failed, redisplay form
             return View(sanPham);
         }
 

@@ -3,26 +3,39 @@
 @{
     ViewData["Title"] = "Danh sách đơn hàng";
 }
+<style>
+    td {
+        color: #545454;
+    }
 
-<h1>Danh sách đơn hàng</h1>
+    th {
+        color: #042b91;
+    }
+</style>
+
+<h1 style="color: #042b91;">Danh sách đơn hàng</h1>
+
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <div class="d-flex">
+        <a asp-action="Create" class="btn btn-outline-primary">TẠO MỚI</a>
+    </div>
 </p>
-<table class="table">
+
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NgayLapHd)
+                Ngày lập hóa đơn
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NgayNhanHang)
+                Ngày nhận hàng
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaKhNavigation)
+                Mã khách hàng
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaNvNavigation)
+                Mã nhân viên
             </th>
             <th></th>
         </tr>
@@ -43,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.MaNvNavigation.MaNv)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MaHd">Edit</a> |
-                <a asp-action="Details" asp-route-mahd="@item.MaHd">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaHd">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.MaHd" class="btn btn-outline-primary">Edit</a>
+                    <a asp-action="Details" asp-route-mahd="@item.MaHd" class="btn btn-outline-primary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.MaHd" class="btn btn-outline-primary">Delete</a>
             </td>
         </tr>
 }

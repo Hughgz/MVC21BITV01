@@ -1,28 +1,37 @@
 ﻿@model IEnumerable<MVC21BITV01Test.Models.KhachHang>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách khách hàng";
 }
 
-<h1>Index</h1>
+<style>
+    td {
+        color: #545454;
+    }
+
+    th {
+        color: #042b91;
+    }
+</style>
+<h1 style="color: #042b91;">Danh sách khách hàng</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TenCty)
+                Tên công ty
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DiaChi)
+                Địa chỉ
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DienThoai)
+                Số điện thoại
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ThanhPhoNavigation)
+               Thành phố
             </th>
             <th></th>
         </tr>
@@ -43,9 +52,9 @@
                 @Html.DisplayFor(modelItem => item.ThanhPhoNavigation.MaThanhPho)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MaKh">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaKh">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaKh">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.MaKh" class="btn btn-outline-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.MaKh" class="btn btn-outline-primary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.MaKh" class="btn btn-outline-primary">Delete</a>
             </td>
         </tr>
 }
