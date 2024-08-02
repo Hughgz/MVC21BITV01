@@ -28,4 +28,10 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "donhang",
+    pattern: "donhang/{mahd}",
+    defaults: new { controller = "HoaDons", action = "Details" }
+);
+
 app.Run();
