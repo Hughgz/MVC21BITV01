@@ -47,53 +47,32 @@ namespace MVC21BITV01Test.Controllers
         // GET: KhachHangs/Create
         public IActionResult Create()
         {
-            ViewBag.ThanhPho = new SelectList(_context.ThanhPhos, "MaThanhPho", "TenThanhPho");
+            ViewData["ThanhPho"] = new SelectList(_context.ThanhPhos, "MaThanhPho", "MaThanhPho");
             return View();
         }
-
 
         // POST: KhachHangs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaKh,TenCty,DiaChi,DienThoai,ThanhPho")] KhachHang khachHang)
+        public async Task<IActionResult> Create(KhachHang khachHang)
         {
             try
             {
-                // Kiểm tra xem ThanhPho có tồn tại không
-                if (!_context.ThanhPhos.Any(t => t.MaThanhPho == khachHang.ThanhPho))
-                {
-                    ModelState.AddModelError("ThanhPho", "Invalid city.");
-                }
-
                 if (ModelState.IsValid)
                 {
-                    Console.WriteLine($"Creating customer: {khachHang.MaKh}, {khachHang.TenCty}");
                     _context.Add(khachHang);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
-                else
-                {
-                    foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                    {
-                        Console.WriteLine(error.ErrorMessage);
-                    }
-                }
-
-                ViewData["ThanhPho"] = new SelectList(_context.ThanhPhos, "MaThanhPho", "TenThanhPho", khachHang.ThanhPho);
+                ViewData["ThanhPho"] = new SelectList(_context.ThanhPhos, "MaThanhPho", "MaThanhPho", khachHang.ThanhPho);
                 return View(khachHang);
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An error occurred while saving the customer: " + ex.Message);
-                ModelState.AddModelError("", "An error occurred while saving the customer: " + ex.Message);
-                ViewData["ThanhPho"] = new SelectList(_context.ThanhPhos, "MaThanhPho", "TenThanhPho", khachHang.ThanhPho);
-                return View(khachHang);
+            catch (Exception ex) { 
+                return BadRequest(ex.Message);
             }
         }
-
 
         // GET: KhachHangs/Edit/5
         public async Task<IActionResult> Edit(string id)
