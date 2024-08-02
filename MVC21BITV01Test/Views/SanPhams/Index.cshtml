@@ -1,28 +1,39 @@
 ﻿@model IEnumerable<MVC21BITV01Test.Models.SanPham>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Danh sách sản phẩm";
 }
 
-<h1>Index</h1>
+<style>
+    td {
+        color: #545454;
+    }
+    th {
+        color: #042b91;
+    }
+</style>
+
+<h1 style="color: #042b91;">Danh sách sản phẩm</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <div class="d-flex">
+        <a asp-action="Create" class="btn btn-outline-primary" >TẠO MỚI</a>
+    </div>
 </p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TenSp)
+                Tên sản phẩm
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DonViTinh)
+                Đơn vị tính
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DonGia)
+                Đơn giá
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Hinh)
+                Hình ảnh
             </th>
             <th></th>
         </tr>
@@ -43,9 +54,9 @@
                     <img src="~/img_products/@item.Hinh" alt="@item.Hinh" style="height:100px" />
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MaSp">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaSp">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaSp">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.MaSp" class="btn btn-outline-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.MaSp" class="btn btn-outline-primary">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.MaSp" class="btn btn-outline-primary">Delete</a>
             </td>
         </tr>
 }

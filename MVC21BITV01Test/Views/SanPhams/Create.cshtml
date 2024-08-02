@@ -1,34 +1,39 @@
 ﻿@model MVC21BITV01Test.Models.SanPham
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Thêm mới sản phẩm";
 }
 
+<<<<<<< HEAD
 <h1 class="text-center">Tạo mới sản phẩm</h1>
 
 <h4>Sản phẩm</h4>
+=======
+<h1 style="color: #042b91;">Thêm mới sản phẩm</h1>
+
+>>>>>>> af9c16505262d1f8475ebdf04e1e33551fcb2860
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="TenSp" class="control-label"></label>
+                <label class="control-label">Tên sản phẩm</label>
                 <input asp-for="TenSp" class="form-control" />
                 <span asp-validation-for="TenSp" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DonViTinh" class="control-label"></label>
+                <label class="control-label">Đơn vị tính</label>
                 <input asp-for="DonViTinh" class="form-control" />
                 <span asp-validation-for="DonViTinh" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DonGia" class="control-label"></label>
+                <label class="control-label">Đơn giá</label>
                 <input asp-for="DonGia" class="form-control" />
                 <span asp-validation-for="DonGia" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Hinh" class="control-label"></label>
+                <label class="control-label">Hình</label>
                 <input type="file" asp-for="Hinh" class="form-control" />
                 <span asp-validation-for="Hinh" class="text-danger"></span>
             </div>
@@ -44,7 +49,11 @@
 </div>
 
 @section Scripts {
+<<<<<<< HEAD
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+=======
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+>>>>>>> af9c16505262d1f8475ebdf04e1e33551fcb2860
 }

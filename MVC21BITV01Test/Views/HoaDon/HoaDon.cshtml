@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "HoaDon";
+}
+@model IEnumerable<MVC21BITV01Test.Models.ViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Danh sách sản phẩm</title>
+</head>
+<body>
+    <h2 class="text-center">Danh sách sản phẩm</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Mã Sản Phẩm</th>
+                <th>Mã Hóa Đơn</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Tên Khách Hàng</th>
+                <th>Ngày Lập HD</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Đơn Vị Tính</th>
+                <th>Số Lượng</th>
+                <th>Đơn Giá</th>
+                <th>Thành Tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaSp</td>
+                    <td>@item.MaHD</td>
+                    <td>@item.TenSp</td>
+                    <td>@item.TenKH</td>
+                    <td>@item.NgayLapHd</td>
+                    <td>@item.TenSp</td>
+                    <td>@item.DonViTinh</td>
+                    <td>@item.SoLuong</td>
+                    <td>@item.DonGia</td>
+                    <td>@item.ThanhTien</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+
+
